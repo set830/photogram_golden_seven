@@ -22,4 +22,29 @@ class PhotosController < ApplicationController
     redirect_to ("http://localhost:3000/photos")
   end
 
+  def edit_form
+    @photos = Photo.find(params[:id])
+
+  end
+
+
+  def update_row
+    @photos = Photo.find(params[:id])
+    @photos.caption = params[:the_caption]
+    @photos.source = params[:the_source]
+    @photos.save
+
+    redirect_to ("http://localhost:3000/photos")
+
+  end
+
+
+  def destroy
+    @photos = Photo.find(params[:id])
+    @photos.destroy
+    redirect_to ("http://localhost:3000/photos")
+
+  end
+
+
 end
